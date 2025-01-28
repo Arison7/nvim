@@ -16,7 +16,6 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
@@ -30,5 +29,12 @@ return {
 	  { "<C-g-;>", mode = { "n" }, function() require("harpoon"):list():prev() end, desc = "Go to previous Harpoon item" },
 	  { "<C-g-,>", mode = { "n" }, function() require("harpoon"):list():next() end, desc = "Go to next Harpoon item" },
 	},
-	dependencies = { "nvim-lua/plenary.nvim" }
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = function()
+	  --required for harpoon
+	  local harpoon = require("harpoon")
+
+	  harpoon:setup({})
+	end
+
 }
