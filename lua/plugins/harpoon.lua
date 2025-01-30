@@ -25,6 +25,7 @@ return {
 	  { "<C-j>", mode = { "n" }, function() require("harpoon"):list():select(1) end, desc = "Select Harpoon item 1" },
 	  { "<C-k>", mode = { "n" }, function() require("harpoon"):list():select(2) end, desc = "Select Harpoon item 2" },
 	  { "<C-l>", mode = { "n" }, function() require("harpoon"):list():select(3) end, desc = "Select Harpoon item 3" },
+	  -- todo: the ";" doesn't seem to work
 	  { "<C-;>", mode = { "n" }, function() require("harpoon"):list():select(4) end, desc = "Select Harpoon item 4" },
 	  { "<C-g-;>", mode = { "n" }, function() require("harpoon"):list():prev() end, desc = "Go to previous Harpoon item" },
 	  { "<C-g-,>", mode = { "n" }, function() require("harpoon"):list():next() end, desc = "Go to next Harpoon item" },

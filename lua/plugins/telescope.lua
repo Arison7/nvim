@@ -14,6 +14,18 @@ return {
 		end
 		},
 
-	}
+	},
+	-- doesn't seem to work
+	config = function()
+		require("telescope").setup{
+			defualts = {
+				file_ignore_patterns = {
+					"node_modules",
+					".git"
+				}
+			}
+		}
+	end
+
 
     }

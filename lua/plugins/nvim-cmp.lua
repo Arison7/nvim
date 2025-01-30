@@ -9,6 +9,7 @@ return {
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
+	event = 'InsertEnter',
 	config = function()
 		local cmp = require('cmp')
 
@@ -33,11 +34,11 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp_signature_help' },
+				--{ name = 'nvim_lsp_signature_help' },
 				{ name = 'nvim_lsp' },
-				{ name = 'buffer' },
-				{ name = 'luasnip' },
-				{ name = 'path' },
+				-- { name = 'buffer' },
+				-- { name = 'luasnip' },
+				-- { name = 'path' },
 			})
 		}
 
