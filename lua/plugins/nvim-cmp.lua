@@ -9,6 +9,35 @@ return {
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
+	config = function()
+		local cmp = require('cmp')
+		cmp.setup({
+		  sources = {
+			{name = 'nvim_lsp'},
+		  },
+		  mapping = cmp.mapping.preset.insert({
+			-- Enter key confirms completion item
+			['<CR>'] = cmp.mapping.confirm({select = false}),
+
+			-- Ctrl + space triggers completion menu
+			['<C-Space>'] = cmp.mapping.complete(),
+		  }),
+		  snippet = {
+			expand = function(args)
+			  require('luasnip').lsp_expand(args.body)
+			end,
+		  },
+		})
+		cmp.setup.cmdline(':', {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = 'path' }
+			}, {
+				{ name = 'cmdline' }
+			})
+		})
+	end
+	--[[
 	event = 'InsertEnter',
 	config = function()
 		local cmp = require('cmp')
@@ -42,15 +71,8 @@ return {
 			})
 		}
 
-		cmp.setup.cmdline(':', {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = 'path' }
-			}, {
-				{ name = 'cmdline' }
-			})
-		})
 	end
+	]]--
 }
 
 
