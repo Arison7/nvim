@@ -4,13 +4,12 @@ return {
 	'nvim-telescope/telescope.nvim', branch = '0.1.x',
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	keys={
+        --TODO: make it work without showing .git on windows
 		{"<leader>pf",mode={"n"},require('telescope.builtin').find_files},
-		{"<C-p>",mode={"n"},require('telescope.builtin').get_files},
+		{"<C-p>",mode={"n"},require('telescope.builtin').git_files},
 		{"<leader>ps",mode={"n"}, function()
-			builtin.grep_string(
-				{ search = vim.fn.input("Grep > ")}
-			)
-		
+			require('telescope.builtin').grep_string(
+				{ search = vim.fn.input("Grep > ")})
 		end
 		},
 

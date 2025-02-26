@@ -20,6 +20,7 @@ return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	keys = {
+        --TODO: Add the way to clear the list 
 	  { "<leader>a", mode = { "n" }, function() require("harpoon"):list():add() end, desc = "Add file to Harpoon" },
 	  { "<C-g>", mode = { "n" }, function() toggle_telescope(require("harpoon"):list()) end, desc = "Open Harpoon window" },
 	  { "<C-j>", mode = { "n" }, function() require("harpoon"):list():select(1) end, desc = "Select Harpoon item 1" },

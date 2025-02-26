@@ -21,9 +21,10 @@ return {
             dashboard.button("f", "󰈞  Find File", "<cmd>Telescope find_files<cr>"),
             dashboard.button("p", "  Open Project", "<cmd>Telescope projects<cr>"),
             dashboard.button("b", "  Show Keybinds (to implement)", "<cmd>WhichKey<cr>"),
-            dashboard.button("c", "  Configure Neovim", "<cmd>e " .. vim.fn.stdpath("config") .. "<cr>"),
+            dashboard.button("c", "  Configure Neovim", "<cmd>e " .. vim.fn.stdpath("config") .. " | cd " .. vim.fn.stdpath("config") .. "<cr>"),
             dashboard.button("u", "  Update Plugins", "<cmd>Lazy update<cr>"),
             dashboard.button("q", "  Quit Neovim", "<cmd>wqa<cr>"),
+        --{"<leader>pc",mode={"n"},require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') } )},
         }
 
         --dashboard.section.footer.val = "Made with   by 0xJoeMama"

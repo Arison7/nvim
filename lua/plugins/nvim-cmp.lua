@@ -12,21 +12,37 @@ return {
 	config = function()
 		local cmp = require('cmp')
 		cmp.setup({
-		  sources = {
-			{name = 'nvim_lsp'},
-		  },
-		  mapping = cmp.mapping.preset.insert({
-			-- Enter key confirms completion item
-			['<CR>'] = cmp.mapping.confirm({select = false}),
+			sources = {
+				{ name = 'nvim_lsp' },
+			},
+			mapping = cmp.mapping.preset.insert({
+				-- Enter key confirms completion item
+				['<CR>'] = cmp.mapping.confirm({ select = false }),
+                
 
-			-- Ctrl + space triggers completion menu
-			['<C-Space>'] = cmp.mapping.complete(),
-		  }),
-		  snippet = {
-			expand = function(args)
-			  require('luasnip').lsp_expand(args.body)
-			end,
-		  },
+				['<Tab>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					else
+						fallback()
+					end
+				end, {
+					"i",
+					"s"
+				}),
+				['<S-Tab>'] = function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					else
+						fallback()
+					end
+				end,
+			}),
+			snippet = {
+				expand = function(args)
+					require('luasnip').lsp_expand(args.body)
+				end,
+			},
 		})
 		cmp.setup.cmdline(':', {
 			mapping = cmp.mapping.preset.cmdline(),
@@ -37,44 +53,10 @@ return {
 			})
 		})
 	end
-	--[[
-	event = 'InsertEnter',
-	config = function()
-		local cmp = require('cmp')
 
-		cmp.setup {
-			snippet = {
-				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			mapping = cmp.mapping.preset.insert({
-				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				["<Tab>"] = cmp.mapping(function()
-					cmp.select_next_item()
-				end, { "i", "s" }),
 
-				["<S-Tab>"] = cmp.mapping(function()
-					cmp.select_prev_item()
-				end, { "i", "s" }),
-			}),
-			sources = cmp.config.sources({
-				--{ name = 'nvim_lsp_signature_help' },
-				{ name = 'nvim_lsp' },
-				-- { name = 'buffer' },
-				-- { name = 'luasnip' },
-				-- { name = 'path' },
-			})
-		}
 
-	end
-	]]--
+
+
+
 }
-
-
-
-
