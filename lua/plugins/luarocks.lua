@@ -1,0 +1,3 @@
+return{
+  "camspiers/luarocks",
+}

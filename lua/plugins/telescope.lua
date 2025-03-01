@@ -12,9 +12,7 @@ return {
 				{ search = vim.fn.input("Grep > ")})
 		end
 		},
-
 	},
-	-- doesn't seem to work
 	config = function()
 		require("telescope").setup{
 			defualts = {

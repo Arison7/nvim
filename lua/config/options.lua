@@ -18,6 +18,8 @@ local options = {
 	--update time
 	updatetime = 50,
 
+    clipboard = "unnamedplus",
+
 
 }
 
