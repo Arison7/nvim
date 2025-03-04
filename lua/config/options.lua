@@ -17,9 +17,10 @@ local options = {
 	scrolloff = 8,
 	--update time
 	updatetime = 50,
-
+    --Choose the default clipboard
     clipboard = "unnamedplus",
-
+    --Don't show the mode since lualine is already doing it
+    showmode = false,
 
 }
 

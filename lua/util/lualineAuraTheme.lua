@@ -8,14 +8,14 @@ local colors = {
     inactive_bg = "#433c67",
     inactive_fg = "#9796a5",
     muted_purple = "#706994",
+    light_cyan = "#82e2ff"
 }
- 
 
 return {
     command = {
-        a = { bg = colors.purple, fg = colors.dark_bg, gui = "bold" },
-        b = { bg = colors.dark_bg, fg = colors.purple },
-        c = { bg = colors.dim_gray, fg = colors.purple}
+        a = { bg = colors.light_cyan, fg = colors.dark_bg, gui = "bold" },
+        b = { bg = colors.dark_bg, fg = colors.light_cyan},
+        c = { bg = colors.dim_gray, fg = colors.light_cyan}
     },
     inactive = {
         a = { bg = colors.inactive_bg, fg = colors.inactive_fg, gui = "bold" },
