@@ -8,6 +8,8 @@ local options = {
 	--numbers
 	number = true,
 	relativenumber = true,
+    --let's the current number get highlighted 
+    cursorline = true,
 	--search
 	hlsearch = false,
 	incsearch = true,

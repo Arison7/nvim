@@ -22,6 +22,7 @@ return {
             respect_buf_cwd = true,
             sync_root_with_cwd = true,
             view = {
+                number = true,
                 relativenumber = true,
                 float = {
                     enable = true,

@@ -11,7 +11,8 @@ return {
             vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
             vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
 
-            
+            -- make the current line number bold and green
+            vim.api.nvim_set_hl(0, "CursorLineNr", { link="Character" })
         end
     }
 }
