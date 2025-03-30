@@ -15,6 +15,9 @@ return { {
     -- Automatically create a pair of brackets and qoutes
     'echasnovski/mini.pairs',
     version = '*',
+    config = function ()
+        require("mini.pairs").setup();
+    end
 }}
 
 
