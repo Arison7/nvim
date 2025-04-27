@@ -1,10 +1,10 @@
+
+
 -- lazy.nvim
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-        cmdheight = 1
-        -- add any options here
     },
     dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -15,7 +15,9 @@ return {
         "rcarriga/nvim-notify",
     },
     config = function()
-        require("noice").setup({
+        local noice = require("noice");
+
+        noice.setup({
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
@@ -24,12 +26,11 @@ return {
                     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
                 },
             },
-            --TODO: make it appear in the middle
             cmdline = {
-                enabled = false,
-                --view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+                enable = true,
             },
-            -- you can enable a preset for easier configuration
+
+            --TODO: make it appear in the middle
             presets = {
                 bottom_search = true,         -- use a classic bottom cmdline for search
                 command_palette = true,       -- position the cmdline and popupmenu together
