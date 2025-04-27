@@ -16,7 +16,6 @@ return {
     --TODO: change the visuals
     config = function()
         local theme = require('util.lualineAuraTheme')
-         
         require('lualine').setup {
              options = {
                 theme = theme;
