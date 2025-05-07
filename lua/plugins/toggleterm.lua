@@ -9,7 +9,6 @@ return {
                 border = "rounded"
             },
             shell = vim.fn.executable("zsh") == 1 and "zsh" or vim.o.shell,
-            shellcmdflag = "--rcfile ~/.config/.zshrc-no-neocat -i",
         }
     end
 };

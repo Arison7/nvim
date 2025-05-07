@@ -20,16 +20,18 @@ local options = {
     --update time
     updatetime = 50,
     --Choose the default clipboard
-    clipboard = "unnamedplus",
-    --Don't show the mode since lualine is already doing it
-    showmode = false,
+    clipboard = "unnamedplus", --Don't show the mode since lualine is already doing it showmode = false,
     --Defualt place for a split window
     splitbelow = true,
-    --Just bloody change 
+    --lua line height
     cmdheight = 1,
+    --No swap files and better undo history
+    swapfiles = false,
+    backup = false,
+    undodir = os.getenv("HOME") .. "/.vim/undodir",
+    undofile = true,
 
 }
-
 
 
 for k, v in pairs(options) do
