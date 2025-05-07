@@ -23,13 +23,13 @@ local options = {
     clipboard = "unnamedplus", --Don't show the mode since lualine is already doing it showmode = false,
     --Defualt place for a split window
     splitbelow = true,
-    --lua line height
-    cmdheight = 1,
     --No swap files and better undo history
-    swapfiles = false,
+    swapfile = false,
     backup = false,
     undodir = os.getenv("HOME") .. "/.vim/undodir",
     undofile = true,
+	--For lsp config
+	signcolumn = "yes",
 
 }
 
