@@ -3,7 +3,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.keymap.set("n", "<leader>pv", function() require("nvim-tree.api").tree.toggle() end)
+vim.keymap.set("n", "<leader>pv", function() require("nvim-tree.api").tree.toggle() end,{desc="Toggle nvim tree float"})
 
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.5
@@ -42,11 +42,11 @@ require("nvim-tree").setup({
 
 -- Telescope Configuration
 -- This section sets up fuzzy finding and searching
-vim.keymap.set("n", "<leader>pf", require('telescope.builtin').find_files)
-vim.keymap.set("n", "<C-p>", require('telescope.builtin').git_files)
-vim.keymap.set("n", "<leader>ps", function()
+vim.keymap.set("n", "<leader>pf", require('telescope.builtin').find_files, {desc= "Fuzzy finder file search"})
+vim.keymap.set("n", "<C-p>", require('telescope.builtin').git_files,{desc= "Fuzzy finder file search(git)"})
+vim.keymap.set("n", "<leader>pg", function()
     require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
-end)
+end, {desc="Grep on functionality"})
 
 require("telescope").setup {
     defaults = {
