@@ -40,6 +40,16 @@ require("nvim-tree").setup({
     },
 })
 
+local api = require("nvim-tree.api")
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "NvimTree",
+	callback = function()
+		vim.keymap.set("n", "?", api.tree.toggle_help, { buffer = true, desc = "Toggle NvimTree Help" })
+	end,
+})
+
+
 -- Telescope Configuration
 -- This section sets up fuzzy finding and searching
 vim.keymap.set("n", "<leader>pf", require('telescope.builtin').find_files, {desc= "Fuzzy finder file search"})

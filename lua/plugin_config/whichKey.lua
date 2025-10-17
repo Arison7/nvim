@@ -20,7 +20,9 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-vim.keymap.set('n', '<Leader>dd', '<cmd>lua require("telescope.builtin").diagnostics()<cr>')
+vim.keymap.set('n', '<Leader>gd', '<cmd>lua require("telescope.builtin").diagnostics()<cr>')
+
+
 
 
 
