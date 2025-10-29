@@ -1,26 +1,26 @@
 -- LSP Configuration
 
 vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  severity_sort = true,
+    virtual_text = true,
+    signs = true,
+    severity_sort = true,
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
-	desc = 'LSP actions',
-	callback = function(event)
-		local opts = { buffer = event.buf }
-		-- Buffer-local keybindings for LSP
-            vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-            vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-            vim.keymap.set('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-            vim.keymap.set('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-            vim.keymap.set('n', '<leader>lR', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-            vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-            vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-            vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-            vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-	end,
+    desc = 'LSP actions',
+    callback = function(event)
+        local opts = { buffer = event.buf }
+        -- Buffer-local keybindings for LSP
+        vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+        vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+        vim.keymap.set('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+        vim.keymap.set('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+        vim.keymap.set('n', '<leader>lR', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+        vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+        vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+        vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+        vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    end,
 })
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -30,68 +30,67 @@ local default_setup = function(server)
     if server == "rust_analyzer" then
         return
     end
-	require('lspconfig')[server].setup({
-		capabilities = lsp_capabilities,
-	})
+    require('lspconfig')[server].setup({
+        capabilities = lsp_capabilities,
+    })
 end
 
 -- Setting up Mason
 require('mason').setup({})
 
 require('mason-nvim-dap').setup({
-    ensure_installed = {"codelldb"}
+    ensure_installed = { "codelldb" }
 })
 require('mason-lspconfig').setup({
-	ensure_installed = { 'rust_analyzer', 'lua_ls'},
-	handlers = {
-		default_setup,
-	},
+    ensure_installed = { 'rust_analyzer', 'lua_ls'},
+    handlers = {
+        default_setup,
+    },
 })
 
 -- nvim-cmp Configuration
 -- This section sets up autocompletion
 local cmp = require('cmp')
 cmp.setup({
-	sources = {
-		{ name = 'nvim_lsp' },
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		-- Enter key confirms completion item
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s"
-		}),
-		['<S-Tab>'] = function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end,
-	}),
-	snippet = {
-		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
-		end,
-	},
+    sources = {
+        { name = 'nvim_lsp' },
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        -- Enter key confirms completion item
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s"
+        }),
+        ['<S-Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end,
+    }),
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
 })
 cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = 'path' }
-	}, {
-		{ name = 'cmdline' }
-	})
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
 })
-

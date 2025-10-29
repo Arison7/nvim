@@ -6,6 +6,24 @@ vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Character" }) -- Make the current line number bold and green
 
+-- Fixes highlights for tsx
+vim.api.nvim_set_hl(0, "@tag.tsx", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "@tag.delimiter.tsx", { link = "Delimiter" })
+vim.api.nvim_set_hl(0, "@property.tsx", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@function.call.tsx", { link = "Function" })
+vim.api.nvim_set_hl(0, "@variable.tsx", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@parameter.tsx", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@constant.tsx", { link = "Constant" })
+vim.api.nvim_set_hl(0, "@string.tsx", { link = "String" })
+vim.api.nvim_set_hl(0, "@number.tsx", { link = "Number" })
+vim.api.nvim_set_hl(0, "@boolean.tsx", { link = "Boolean" })
+vim.api.nvim_set_hl(0, "@comment.tsx", { link = "Comment" })
+vim.api.nvim_set_hl(0, "@punctuation.delimiter.tsx", { link = "Delimiter" })
+vim.api.nvim_set_hl(0, "@operator.tsx", { link = "Operator" })
+vim.api.nvim_set_hl(0, "@type.tsx", { link = "Type" })
+vim.api.nvim_set_hl(0, "@keyword.tsx", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "@method.tsx", { link = "Function" })
+
 
 -- Setup for Alpha (start screen)
 local dashboard = require("alpha.themes.dashboard")
